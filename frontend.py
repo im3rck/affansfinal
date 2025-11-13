@@ -508,9 +508,27 @@ Response:"""
     def _try_direct_query(self, message: str, force: bool = False) -> str:
         """
         Handle simple queries directly without API calls
+        Only handles very simple queries - complex queries should go through classification
         """
         msg_lower = message.lower()
-        
+
+        # IMPORTANT: Skip if query requires advanced analysis (unless force mode)
+        # These keywords indicate the user wants more than a simple direct answer
+        if not force:
+            advanced_indicators = [
+                'sql', 'pandas', 'query', 'code',  # SQL/code requests
+                'average rating', 'mean rating', 'by rating', 'by average', 'by mean',  # Aggregations
+                'chart', 'graph', 'visualize', 'visualization', 'plot',  # Charts
+                'analysis', 'analyze', 'insight', 'trend', 'pattern',  # Analytics
+                'top 5 by', 'top 10 by', 'best by', 'highest by', 'lowest by',  # Aggregated rankings
+                'compare', 'comparison', 'versus', 'vs',  # Comparisons
+                'distribution', 'correlation', 'relationship'  # Statistical analysis
+            ]
+
+            # If any advanced indicator is present, skip direct query and use classification
+            if any(indicator in msg_lower for indicator in advanced_indicators):
+                return None
+
         # Dataset info queries
         if any(word in msg_lower for word in ['how many', 'total rows', 'count', 'dataset size']):
             return f"Dataset Overview:\n- Total products: {len(self.df):,}\n- Total columns: {len(self.df.columns)}\n- Categories: {self.df['main_category'].nunique() if 'main_category' in self.df.columns else 'N/A'}"
