@@ -1,0 +1,562 @@
+{
+  "columns": [
+    "product_id",
+    "product_name",
+    "category",
+    "discounted_price",
+    "actual_price",
+    "discount_percentage",
+    "rating",
+    "rating_count",
+    "about_product",
+    "user_id",
+    "user_name",
+    "review_id",
+    "review_title",
+    "review_content",
+    "img_link",
+    "product_link",
+    "main_category",
+    "sub_category_1",
+    "sub_category_2",
+    "sub_category_3",
+    "savings_amount",
+    "price_range",
+    "rating_category",
+    "review_length",
+    "brand"
+  ],
+  "dtypes": {
+    "product_id": "object",
+    "product_name": "object",
+    "category": "object",
+    "discounted_price": "float64",
+    "actual_price": "float64",
+    "discount_percentage": "int64",
+    "rating": "float64",
+    "rating_count": "float64",
+    "about_product": "object",
+    "user_id": "object",
+    "user_name": "object",
+    "review_id": "object",
+    "review_title": "object",
+    "review_content": "object",
+    "img_link": "object",
+    "product_link": "object",
+    "main_category": "object",
+    "sub_category_1": "object",
+    "sub_category_2": "object",
+    "sub_category_3": "object",
+    "savings_amount": "float64",
+    "price_range": "object",
+    "rating_category": "object",
+    "review_length": "int64",
+    "brand": "object"
+  },
+  "sample_rows": [
+    {
+      "product_id": "B07JW9H4J1",
+      "product_name": "Wayona Nylon Braided USB to Lightning Fast Charging and Data Sync Cable Compatible for iPhone 13, 12,11, X, 8, 7, 6, 5, iPad Air, Pro, Mini (3 FT Pack of 1, Grey)",
+      "category": "Computers&Accessories|Accessories&Peripherals|Cables&Accessories|Cables|USBCables",
+      "discounted_price": 399.0,
+      "actual_price": 1099.0,
+      "discount_percentage": 64,
+      "rating": 4.2,
+      "rating_count": 24269.0,
+      "about_product": "High Compatibility : Compatible With iPhone 12, 11, X/XsMax/Xr ,iPhone 8/8 Plus,iPhone 7/7 Plus,iPhone 6s/6s Plus,iPhone 6/6 Plus,iPhone 5/5s/5c/se,iPad Pro,iPad Air 1/2,iPad mini 1/2/3,iPod nano7,iPod touch and more apple devices.|Fast Charge&Data Sync : It can charge and sync simultaneously at a rapid speed, Compatible with any charging adaptor, multi-port charging station or power bank.|Durability : Durable nylon braided design with premium aluminum housing and toughened nylon fiber wound tightly around the cord lending it superior durability and adding a bit to its flexibility.|High Security Level : It is designed to fully protect your device from damaging excessive current.Copper core thick+Multilayer shielding, Anti-interference, Protective circuit equipment.|WARRANTY: 12 months warranty and friendly customer services, ensures the long-time enjoyment of your purchase. If you meet any question or problem, please don't hesitate to contact us.",
+      "user_id": "AG3D6O4STAQKAY2UVGEUV46KN35Q,AHMY5CWJMMK5BJRBBSNLYT3ONILA,AHCTC6ULH4XB6YHDY6PCH2R772LQ,AGYHHIERNXKA6P5T7CZLXKVPT7IQ,AG4OGOFWXJZTQ2HKYIOCOY3KXF2Q,AENGU523SXMOS7JPDTW52PNNVWGQ,AEQJHCVTNINBS4FKTBGQRQTGTE5Q,AFC3FFC5PKFF5PMA52S3VCHOZ5FQ",
+      "user_name": "Manav,Adarsh gupta,Sundeep,S.Sayeed Ahmed,jaspreet singh,Khaja moin,Anand,S.ARUMUGAM",
+      "review_id": "R3HXWT0LRP0NMF,R2AJM3LFTLZHFO,R6AQJGUP6P86,R1KD19VHEDV0OR,R3C02RMYQMK6FC,R39GQRVBUZBWGY,R2K9EDOE15QIRJ,R3OI7YT648TL8I",
+      "review_title": "Satisfied,Charging is really fast,Value for money,Product review,Good quality,Good product,Good Product,As of now seems good",
+      "review_content": "Looks durable Charging is fine tooNo complains,Charging is really fast, good product.,Till now satisfied with the quality.,This is a good product . The charging speed is slower than the original iPhone cable,Good quality, would recommend,https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/81---F1ZgHL._SY88.jpg,Product had worked well till date and was having no issue.Cable is also sturdy enough...Have asked for replacement and company is doing the same...,Value for money",
+      "img_link": "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/51UsScvHQNL._SX300_SY300_QL70_FMwebp_.jpg",
+      "product_link": "https://www.amazon.in/Wayona-Braided-WN3LG1-Syncing-Charging/dp/B07JW9H4J1/ref=sr_1_1?qid=1672909124&s=electronics&sr=1-1",
+      "main_category": "Computers&Accessories",
+      "sub_category_1": "Accessories&Peripherals",
+      "sub_category_2": "Cables&Accessories",
+      "sub_category_3": "Cables",
+      "savings_amount": 700.0,
+      "price_range": "Economy (₹200-500)",
+      "rating_category": "Good",
+      "review_length": 483,
+      "brand": "Wayona"
+    },
+    {
+      "product_id": "B098NS6PVG",
+      "product_name": "Ambrane Unbreakable 60W / 3A Fast Charging 1.5m Braided Type C Cable for Smartphones, Tablets, Laptops & other Type C devices, PD Technology, 480Mbps Data Sync, Quick Charge 3.0 (RCT15A, Black)",
+      "category": "Computers&Accessories|Accessories&Peripherals|Cables&Accessories|Cables|USBCables",
+      "discounted_price": 199.0,
+      "actual_price": 349.0,
+      "discount_percentage": 43,
+      "rating": 4.0,
+      "rating_count": 43994.0,
+      "about_product": "Compatible with all Type C enabled devices, be it an android smartphone (Mi, Samsung, Oppo, Vivo, Realme, OnePlus, etc), tablet, laptop (Macbook, Chromebook, etc)|Supports Quick Charging (2.0/3.0)|Unbreakable – Made of special braided outer with rugged interior bindings, it is ultra-durable cable that won’t be affected by daily rough usage|Ideal Length – It has ideal length of 1.5 meters which is neither too short like your typical 1meter cable or too long like a 2meters cable|Supports maximum 3A fast charging and 480 Mbps data transfer speed|6 months manufacturer warranty from the date of purchase",
+      "user_id": "AECPFYFQVRUWC3KGNLJIOREFP5LQ,AGYYVPDD7YG7FYNBXNGXZJT525AQ,AHONIZU3ICIEHQIGQ6R2VFRSBXOQ,AFPHD2CRPDZMWMBL7WXRSVYWS5JA,AEZ346GX3HJ4O4XNRPHCNHXQURMQ,AEPSWFPNECKO34PUC7I56ITGXR6Q,AHWVEHR5DYLVFTO2KF3IZATFQSWQ,AH4QT33M55677I7ISQOAKEQWACYQ",
+      "user_name": "ArdKn,Nirbhay kumar,Sagar Viswanathan,Asp,Placeholder,BharanI,sonia,Niam",
+      "review_id": "RGIQEG07R9HS2,R1SMWZQ86XIN8U,R2J3Y1WL29GWDE,RYGGS0M09S3KY,R17KQRUTAN5DKS,R3AAQGS6HP2QUK,R1HDNOG6TO2CCA,R3PHKXYA5AFEOU",
+      "review_title": "A Good Braided Cable for Your Type C Device,Good quality product from ambrane,Super cable,As,Good quality,Good product,its good,Good quality for the price but one issue with my unit",
+      "review_content": "I ordered this cable to connect my phone to Android Auto of car. The cable is really strong and the connection ports are really well made. I already has a Micro USB cable from Ambrane and it's still in good shape. I connected my phone to the car using the cable and it got connected well and no issues. I also connected it to the charging port and yes it has Fast Charging support.,It quality is good at this price and the main thing is that i didn't ever thought that this cable will be so long it's good one and charging power is too good and also supports fast charging,Value for money, with extra length👍,Good, working fine,Product quality is good,Good,very good,Bought for my daughter's old phone.Brand new cable it was not charging, I already repacked and requested for replacement.I checked again, and there was some green colour paste/fungus inside the micro USB connector. I cleaned with an alcoholic and starts working again.Checked the ampere of charging speed got around 1400ma-1500ma - not bad, came with braided 1.5m long cable, pretty impressive for the price.Can't blame the manufacturer.But quality issues by the distributor, they might have stored in very humid place.",
+      "img_link": "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/31zOsqQOAOL._SY445_SX342_QL70_FMwebp_.jpg",
+      "product_link": "https://www.amazon.in/Ambrane-Unbreakable-Charging-Braided-Cable/dp/B098NS6PVG/ref=sr_1_2?qid=1672909124&s=electronics&sr=1-2",
+      "main_category": "Computers&Accessories",
+      "sub_category_1": "Accessories&Peripherals",
+      "sub_category_2": "Cables&Accessories",
+      "sub_category_3": "Cables",
+      "savings_amount": 150.0,
+      "price_range": "Budget (<₹200)",
+      "rating_category": "Average",
+      "review_length": 1186,
+      "brand": "Ambrane"
+    },
+    {
+      "product_id": "B096MSW6CT",
+      "product_name": "Sounce Fast Phone Charging Cable & Data Sync USB Cable Compatible for iPhone 13, 12,11, X, 8, 7, 6, 5, iPad Air, Pro, Mini & iOS Devices",
+      "category": "Computers&Accessories|Accessories&Peripherals|Cables&Accessories|Cables|USBCables",
+      "discounted_price": 199.0,
+      "actual_price": 1899.0,
+      "discount_percentage": 90,
+      "rating": 3.9,
+      "rating_count": 7928.0,
+      "about_product": "【 Fast Charger& Data Sync】-With built-in safety proctections and four-core copper wires promote maximum signal quality and strength and enhance charging & data transfer speed with up to 480 mb/s transferring speed.|【 Compatibility】-Compatible with iPhone 13, 12,11, X, 8, 7, 6, 5, iPad Air, Pro, Mini & iOS devices.|【 Sturdy & Durable】-The jacket and enforced connector made of TPE and premium copper, are resistant to repeatedly bending and coiling.|【 Ultra High Quality】: According to the experimental results, the fishbone design can accept at least 20,000 bending and insertion tests for extra protection and durability. Upgraded 3D aluminum connector and exclusive laser welding technology, which to ensure the metal part won't break and also have a tighter connection which fits well even with a protective case on and will never loose connection.|【 Good After Sales Service】-Our friendly and reliable customer service will respond to you within 24 hours ! you can purchase with confidence,and every sale includes a 365-day worry-free Service to prove the importance we set on quality.",
+      "user_id": "AGU3BBQ2V2DDAMOAKGFAWDDQ6QHA,AESFLDV2PT363T2AQLWQOWZ4N3OA,AHTPQRIMGUD4BYR5YIHBH3CCGEFQ,AEUVWXYP5LT7PZLLZENEO2NODPBQ,AHC7MPW55DOO6WNCOQVA2VHOD26A,AFDI6FRPFBTNBG7BAEB7JDJSMKDQ,AFQKCEEEKXCOHTDG4WUN3XPPHJQQ,AHKUUFNMBZIDLSSPA4FEHIO2EC7Q",
+      "user_name": "Kunal,Himanshu,viswanath,sai niharka,saqib malik,Aashiq,Ramu Challa,Sanjay gupta",
+      "review_id": "R3J3EQQ9TZI5ZJ,R3E7WBGK7ID0KV,RWU79XKQ6I1QF,R25X4TBMPY91LX,R27OK7G99VK0TR,R207CYDCHJJTCJ,R3PCU8XMU173BT,R1IMONDOWRNU5V",
+      "review_title": "Good speed for earlier versions,Good Product,Working good,Good for the price,Good,Worth for money,Working nice,it's a really nice product",
+      "review_content": "Not quite durable and sturdy,https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/71rIggrbUCL._SY88.jpg,Working good,https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/61bKp9YO6wL._SY88.jpg,Product,Very nice product,Working well,It's a really nice product",
+      "img_link": "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/31IvNJZnmdL._SY445_SX342_QL70_FMwebp_.jpg",
+      "product_link": "https://www.amazon.in/Sounce-iPhone-Charging-Compatible-Devices/dp/B096MSW6CT/ref=sr_1_3?qid=1672909124&s=electronics&sr=1-3",
+      "main_category": "Computers&Accessories",
+      "sub_category_1": "Accessories&Peripherals",
+      "sub_category_2": "Cables&Accessories",
+      "sub_category_3": "Cables",
+      "savings_amount": 1700.0,
+      "price_range": "Budget (<₹200)",
+      "rating_category": "Average",
+      "review_length": 271,
+      "brand": "Sounce"
+    },
+    {
+      "product_id": "B08HDJ86NZ",
+      "product_name": "boAt Deuce USB 300 2 in 1 Type-C & Micro USB Stress Resistant, Tangle-Free, Sturdy Cable with 3A Fast Charging & 480mbps Data Transmission, 10000+ Bends Lifespan and Extended 1.5m Length(Martian Red)",
+      "category": "Computers&Accessories|Accessories&Peripherals|Cables&Accessories|Cables|USBCables",
+      "discounted_price": 329.0,
+      "actual_price": 699.0,
+      "discount_percentage": 53,
+      "rating": 4.2,
+      "rating_count": 94363.0,
+      "about_product": "The boAt Deuce USB 300 2 in 1 cable is compatible with smartphones, tablets, PC peripherals, Bluetooth speakers, power banks and all other devices with Type-C as well as Micro USB port|It ensures 3A fast charging and data transmissions with rapid sync at 480 mbps|The premium Nylon braided skin makes it sturdy and invincible against external damage|Its Aluminium alloy shell housing makes it last longer with 10000+ Bends Lifespan with extended frame protection for strain relief|The resilient and flexible design offers a tangle free experience seamlessly|Deuce USB 300 cable offers a perfect 1.5 meters in length for smooth & hassle-free user experience|2 years warranty from the date of purchase",
+      "user_id": "AEWAZDZZJLQUYVOVGBEUKSLXHQ5A,AG5HTSFRRE6NL3M5SGCUQBP7YSCA,AH725ST5NW2Y4JZPKUNTIJCUK2BA,AHV3TXIFCJPMS4D5JATCEUR266MQ,AGWIGDEMFIIUAOXYY2QATNBSUGHA,AFSTSLQUV4EVEXWKBOLEFHL2H5YQ,AGAKDNBHY2FKX7I4ACRGILU7QL7A,AFNWJUWJRHCC6HN52KMG5AKZY37Q",
+      "user_name": "Omkar dhale,JD,HEMALATHA,Ajwadh a.,amar singh chouhan,Ravi Siddan,Himanshu Goel,Udaykumar",
+      "review_id": "R3EEUZKKK9J36I,R3HJVYCLYOY554,REDECAZ7AMPQC,R1CLH2ULIVG5U3,R2DMKIBGFKBD6R,RC89B5IAJUTR5,R3B3DDON5FH8DS,R13WAEJDI5RS36",
+      "review_title": "Good product,Good one,Nice,Really nice product,Very first time change,Good,Fine product but could be better,Very nice it's charging like jet",
+      "review_content": "Good product,long wire,Charges good,Nice,I bought this cable for Rs.339 worthy product for this price, i tested it in various charger adapters 33w and 18w it supports fast charging as well.,Good,Ok,I had got this at good price on sale on Amazon and product is useful with warranty but for warranty you need to go very far not practical for such a cost and mine micro to type c connector stopped working after few days only.,I like this product",
+      "img_link": "https://m.media-amazon.com/images/I/41V5FtEWPkL._SX300_SY300_QL70_FMwebp_.jpg",
+      "product_link": "https://www.amazon.in/Deuce-300-Resistant-Tangle-Free-Transmission/dp/B08HDJ86NZ/ref=sr_1_4?qid=1672909124&s=electronics&sr=1-4",
+      "main_category": "Computers&Accessories",
+      "sub_category_1": "Accessories&Peripherals",
+      "sub_category_2": "Cables&Accessories",
+      "sub_category_3": "Cables",
+      "savings_amount": 370.0,
+      "price_range": "Economy (₹200-500)",
+      "rating_category": "Good",
+      "review_length": 443,
+      "brand": "boAt"
+    },
+    {
+      "product_id": "B08CF3B7N1",
+      "product_name": "Portronics Konnect L 1.2M Fast Charging 3A 8 Pin USB Cable with Charge & Sync Function for iPhone, iPad (Grey)",
+      "category": "Computers&Accessories|Accessories&Peripherals|Cables&Accessories|Cables|USBCables",
+      "discounted_price": 154.0,
+      "actual_price": 399.0,
+      "discount_percentage": 61,
+      "rating": 4.2,
+      "rating_count": 16905.0,
+      "about_product": "[CHARGE & SYNC FUNCTION]- This cable comes with charging & Data sync function|[HIGH QUALITY MATERIAL]- TPE + Nylon Material to make sure that the life of the cable is enhanced significantly|[LONG CORD]- The Cable is extra thick 1.2 meter long, optimized for an easy use for your comfort at home or office|[MORE DURABLE]-This cable is unique interms of design and multi-use and is positioned to provide the best comfort and performance while using|[UNIVERSAL COMPATIBILITY]- Compatible with all devices like iPhone XS, X, XR, 8, 7, 6S, 6, 5S, iPad Pro, iPad mini and iPad Air",
+      "user_id": "AE3Q6KSUK5P75D5HFYHCRAOLODSA,AFUGIFH5ZAFXRDSZHM4QB2KPKFUQ,AFK4NJOLFSJGWLOJIUIAROJF6YVA,AFUOTYRFUXVPEBGIXVZZ7DR3CZUA,AFDLRSXKDZ6U3U3KD46SQLFGZQRA,AH5VLM66SIK7J3IRG4NY7XVOQ55A,AE3MQNNHHLUHXURL5S7IAR7JTGNQ,AFSEOFZY67MYC7UAJU264Z5NFTLA",
+      "user_name": "rahuls6099,Swasat Borah,Ajay Wadke,Pranali,RVK,Bhargav,Durai Vignesh,Amazon Customer",
+      "review_id": "R1BP4L2HH9TFUP,R16PVJEXKV6QZS,R2UPDB81N66T4P,R3KK4GT934ST3I,RCFHMWUSBIJO,RDO7DACXMAJ84,R3A6MEZL3LY66Z,R1ESIEKPGAYA29",
+      "review_title": "As good as original,Decent,Good one for secondary use,Best quality,GOOD,Amazing product at a mind blowing price!,Nice Quality,Good product",
+      "review_content": "Bought this instead of original apple, does the work for 150rs, not as fast as apple charger but its a good option if you want cheap and good product, bought it for iPad pro 10.5 and it's working flawlessly, build quality is ok, its not like i am gonna hang my clothes on it and i want a very strong cable, even a braided cable stop working after a year, i have used both Anker and Apple store strong braided cable they all stop working after a year so please don't buy high end cables just for that instead choose a this one and even if it's stops working withing a year you only loose 150rs compares to 2000rs.UPDATE------------------------------------pin has stopped charging from one side, now i have to slip the pin to charge from other side, but i will update and let know for how long does it work,,It’s good. Not sure about durability as the pin area feels a bit fragile,Does not support apple carplaySo was little disappointed about thatOther than that cable is made up of very good quality,Best to buy,100% NOT FATHFUL,Writing this review post 10 months and 3 orders of the same product.Honestly Portronics Konnect L lightning cable works like magic with the original Apple charging brick.Seeing the price of the cable I initially hesitated buying as it was as low as ₹99/- with the offers and so I wasn’t sure if it would work well with my iPhone 12 or whether it would impact my iPhone’s battery health because all the other lightning cable brands were costing over ₹350/- like Wayona, Amazon Basics, etc.Earlier I was using Wayona Brand lightning cable with eventually frayed and stopped working.Charging Speed:Charges my iPhone fast enough almost similar compared to the original cable level when used with 12W Original Apple power adapter.Quality and Durability:Great quality braided cable and doesn’t tangle easily and can withstand day-to-day usage.L-Shaped pin:This is very innovative by Portronics and it makes sure the cable doesn’t get damaged even if used while charging.CarPlay and Data Sync:Works smoothly with CarPlay and syncs data effortlessly.PS: I have used this cable only with the Original Apple Charging Brick and extremely satisfied with its performance.,Better than I expect the product I like that Quality and I plan to buy same type cable come with usb C to Lighting cable for emergency purpose that much I love this cable. Buy for this cable only emergency uses only since Good one,Good product and value for money",
+      "img_link": "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/31VzNhhqifL._SX300_SY300_QL70_FMwebp_.jpg",
+      "product_link": "https://www.amazon.in/Portronics-Konnect-POR-1080-Charging-Function/dp/B08CF3B7N1/ref=sr_1_5?qid=1672909124&s=electronics&sr=1-5",
+      "main_category": "Computers&Accessories",
+      "sub_category_1": "Accessories&Peripherals",
+      "sub_category_2": "Cables&Accessories",
+      "sub_category_3": "Cables",
+      "savings_amount": 245.0,
+      "price_range": "Budget (<₹200)",
+      "rating_category": "Good",
+      "review_length": 2451,
+      "brand": "Portronics"
+    }
+  ],
+  "row_count": 1465,
+  "numeric_columns": [
+    "discounted_price",
+    "actual_price",
+    "discount_percentage",
+    "rating",
+    "rating_count",
+    "savings_amount",
+    "review_length"
+  ],
+  "categorical_columns": [
+    "product_id",
+    "product_name",
+    "category",
+    "about_product",
+    "user_id",
+    "user_name",
+    "review_id",
+    "review_title",
+    "review_content",
+    "img_link",
+    "product_link",
+    "main_category",
+    "sub_category_1",
+    "sub_category_2",
+    "sub_category_3",
+    "price_range",
+    "rating_category",
+    "brand"
+  ],
+  "column_descriptions": {
+    "product_id": "Unique identifier for each product",
+    "product_name": "Name/title of the product",
+    "category": "Product category hierarchy",
+    "discounted_price": "Current selling price after discount",
+    "actual_price": "Original price before discount",
+    "discount_percentage": "Percentage discount applied",
+    "rating": "Average customer rating (out of 5)",
+    "rating_count": "Number of customer ratings",
+    "about_product": "Product description and features",
+    "user_id": "Unique identifier for reviewers",
+    "user_name": "Name of the reviewer",
+    "review_id": "Unique identifier for each review",
+    "review_title": "Title/summary of the review",
+    "review_content": "Detailed review content",
+    "img_link": "Data field: img_link",
+    "product_link": "Data field: product_link",
+    "main_category": "Primary product category",
+    "sub_category_1": "First level subcategory",
+    "sub_category_2": "Second level subcategory",
+    "sub_category_3": "Data field: sub_category_3",
+    "savings_amount": "Amount saved compared to actual price",
+    "price_range": "Categorized price range (Budget/Premium/etc)",
+    "rating_category": "Categorized rating (Excellent/Good/etc)",
+    "review_length": "Length of review in characters",
+    "brand": "Brand name of the product"
+  },
+  "numeric_stats": {
+    "discounted_price": {
+      "min": 39.0,
+      "max": 77990.0,
+      "mean": 3125.3108737201364,
+      "median": 799.0,
+      "std": 6944.304394400705
+    },
+    "actual_price": {
+      "min": 39.0,
+      "max": 139900.0,
+      "mean": 5444.990634812287,
+      "median": 1650.0,
+      "std": 10874.826864024224
+    },
+    "discount_percentage": {
+      "min": 0.0,
+      "max": 94.0,
+      "mean": 47.69146757679181,
+      "median": 50.0,
+      "std": 21.635905180856668
+    },
+    "rating": {
+      "min": 2.0,
+      "max": 5.0,
+      "mean": 4.096584699453552,
+      "median": 4.1,
+      "std": 0.2916740794521227
+    },
+    "rating_count": {
+      "min": 2.0,
+      "max": 426973.0,
+      "mean": 18295.541353383458,
+      "median": 5179.0,
+      "std": 42753.864952249205
+    },
+    "savings_amount": {
+      "min": 0.0,
+      "max": 61910.0,
+      "mean": 2319.6797610921503,
+      "median": 800.0,
+      "std": 4604.473789776238
+    },
+    "review_length": {
+      "min": 67.0,
+      "max": 18507.0,
+      "mean": 1393.223890784983,
+      "median": 823.0,
+      "std": 1822.3205842717507
+    }
+  },
+  "categorical_stats": {
+    "product_id": {
+      "unique_count": 1351,
+      "top_values": {
+        "B08WRWPM22": 3,
+        "B09YLXYP7Y": 3,
+        "B08CF3D7QR": 3,
+        "B09NHVCHS9": 3,
+        "B085DTN6R2": 3,
+        "B08DDRGWTJ": 3,
+        "B09KLVMZ3B": 3,
+        "B08CF3B7N1": 3,
+        "B083342NKJ": 3,
+        "B09C6HXFC1": 3
+      }
+    },
+    "product_name": {
+      "unique_count": 1337,
+      "top_values": {
+        "Fire-Boltt Ninja Call Pro Plus 1.83\" Smart Watch with Bluetooth Calling, AI Voice Assistance, 100 Sports Modes IP67 Rating, 240*280 Pixel High Resolution": 5,
+        "Fire-Boltt Phoenix Smart Watch with Bluetooth Calling 1.3\",120+ Sports Modes, 240*240 PX High Res with SpO2, Heart Rate Monitoring & IP67 Rating": 4,
+        "Amazonbasics Nylon Braided Usb-C To Lightning Cable, Fast Charging Mfi Certified Smartphone, Iphone Charger (6-Foot, Dark Grey)": 3,
+        "Duracell USB Lightning Apple Certified (Mfi) Braided Sync & Charge Cable For Iphone, Ipad And Ipod. Fast Charging Lightning Cable, 3.9 Feet (1.2M) - Black": 3,
+        "Flix Micro Usb Cable For Smartphone (Black)": 3,
+        "Fire-Boltt India's No 1 Smartwatch Brand Talk 2 Bluetooth Calling Smartwatch with Dual Button, Hands On Voice Assistance, 60 Sports Modes, in Built Mic & Speaker with IP68 Rating": 3,
+        "Wayona Nylon Braided USB to Lightning Fast Charging and Data Sync Cable Compatible for iPhone 13, 12,11, X, 8, 7, 6, 5, iPad Air, Pro, Mini (3 FT Pack of 1, Grey)": 3,
+        "Ambrane Unbreakable 60W / 3A Fast Charging 1.5m Braided Type C Cable for Smartphones, Tablets, Laptops & other Type C devices, PD Technology, 480Mbps Data Sync, Quick Charge 3.0 (RCT15A, Black)": 3,
+        "Sounce Fast Phone Charging Cable & Data Sync USB Cable Compatible for iPhone 13, 12,11, X, 8, 7, 6, 5, iPad Air, Pro, Mini & iOS Devices": 3,
+        "boAt Deuce USB 300 2 in 1 Type-C & Micro USB Stress Resistant, Tangle-Free, Sturdy Cable with 3A Fast Charging & 480mbps Data Transmission, 10000+ Bends Lifespan and Extended 1.5m Length(Martian Red)": 3
+      }
+    },
+    "category": {
+      "unique_count": 211,
+      "top_values": {
+        "Computers&Accessories|Accessories&Peripherals|Cables&Accessories|Cables|USBCables": 233,
+        "Electronics|WearableTechnology|SmartWatches": 76,
+        "Electronics|Mobiles&Accessories|Smartphones&BasicMobiles|Smartphones": 68,
+        "Electronics|HomeTheater,TV&Video|Televisions|SmartTelevisions": 63,
+        "Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear": 52,
+        "Electronics|HomeTheater,TV&Video|Accessories|RemoteControls": 49,
+        "Home&Kitchen|Kitchen&HomeAppliances|SmallKitchenAppliances|MixerGrinders": 27,
+        "Computers&Accessories|Accessories&Peripherals|Keyboards,Mice&InputDevices|Mice": 24,
+        "Electronics|HomeTheater,TV&Video|Accessories|Cables|HDMICables": 24,
+        "Home&Kitchen|Kitchen&HomeAppliances|Vacuum,Cleaning&Ironing|Irons,Steamers&Accessories|Irons|DryIrons": 24
+      }
+    },
+    "about_product": {
+      "unique_count": 1293,
+      "top_values": {
+        "[CHARGE & SYNC FUNCTION]- This cable comes with charging & Data sync function|[HIGH QUALITY MATERIAL]- TPE + Nylon Material to make sure that the life of the cable is enhanced significantly|[LONG CORD]- The Cable is extra thick 1.2 meter long, optimized for an easy use for your comfort at home or office|[MORE DURABLE]-This cable is unique interms of design and multi-use and is positioned to provide the best comfort and performance while using|[UNIVERSAL COMPATIBILITY]- Compatible with all devices like iPhone XS, X, XR, 8, 7, 6S, 6, 5S, iPad Pro, iPad mini and iPad Air": 6,
+        "Bluetooth Calling- Wave Call comes with a premium built-in speaker and bluetooth calling via which you can stay connected to your friends, family, and colleagues|Dial Pad- Its dial pad is super responsive and convenient. You can also save upto 10 contacts in this smart watch|Screen Size- Wave Call comes with a 1.69” HD Display that features a bold, bright, and highly responsive 2.5D curved touch interface|Resolution- With 550 nits of brightness get sharper color resolution that brightens your virtual world exponentially.|Design- The ultra slim and lightweight design of the watch is ideal to keep you surfing your wave all day!|Watch Faces- Wave Call comes with 150+ Cloud watchfaces for you to pick from, complementing your every mood and outfit|HR, SpO2 & Breathing- Monitor your heart rate and blood oxygen levels on-the-go with the heart rate and SpO2 monitor. It also comes with Guided Breathing to help you relax and embrace mindfulness.": 5,
+        "Added Protection: An additional layer of protection has been added to the Lightning and USB ends to improve durability and reduce fraying;": 5,
+        "Fast Charging Cable - The cable can support upto a charging speed of 3A making it the optimal cable for Quick Charge / Rapid Charge and Turbo Charge devices.|Reversible Connector – It has reversible type c connector that can be plugged in any direction, upside or downside.|Durable Cable- Using only premium quality materials and a tough, durable PVC Coating, the Ambrane USB cable is built for connecting and disconnecting over and over again without signal loss.|High Speed Data Transfer- 480 Mbps data transfer speed allows you to sync the data to the computer or other USB devices within few seconds.|Genuine USB Connectors- We use only certified and high-quality connectors ensuring not only the safety of the connected device but also reliable charging and high-speed data transmission.": 4,
+        "Screen Size: The 1.69 inch HD full touch display with 500 nits of brightness will bring every detail to life!|Resolution: Get sharper color resolution that brightens your virtual world exponentially.|Slim Design: The ultra slim and lightweight design of the watch is ideal to keep you surfing your wave all day!|Sports Modes: Track your daily activity: calories burnt & steps taken. Choose from multiple sports modes which include Walking, Running, Cycling, Climbing, Yoga, Basketball, Football & many more|Google Fit & Apple Health: The watch supports Google and Apple Fit to seamlessly monitor your health.|IP Rating: Sweat freely while you work out with IP68 dust, sweat and splash resistance.|Watch Faces- Customize your style with 140+ based watch faces.": 4,
+        "Alexa- Alexa built-in Voice Assistant that sets reminders, alarms and answers questions from weather forecasts to live cricket scores at your command!|Screen Size- ;1.69\" big square colour LCD display with a round dial features complete capacitive touch experience to let you take control, effortlessly.|Watch Faces- Multiple watch faces with customizable options to match your OOTD, every day!|Brightness- The ambient light display allows automatic adjustment of brightness on the watch, suited to your environment|HR & SpO2- The watch comes with a stress monitor that reads your HR to indicate stress levels.It also monitors your heart rate and SpO2 (blood oxygen levels) to keep a tab on your overall health.|Sleep Monitor- Track all stages of sleep every night and keep a tab on your sleep health with the sleep monitoring feature on the watch.|Sports Friendly- Its 14 sports mode and 5 ATM dust, splash and sweat resistance makes it the perfect fitness companion to have.": 4,
+        "Upto 12GB RAM with RAM Plus | 128GB internal memory expandable up to 1TB||Superfast 5G with 11 5G Bands, Powerful MTK D700 Octa Core 2.2GH with Android 12,One UI Core 4|50MP+2MP Dual camera setup- True 50MP (F1.8) main camera + 2MP (F2.4) | 5MP (F2.0) front came|16.55 centimeters (6.5-inch) LCD, HD+ resolution with 720 x 1600 pixels resolution, 269 PPI with 16M color|5000mAH lithium-ion battery, 1 year manufacturer warranty for device and 6 months manufacturer warranty for in-box accessories including batteries from the date of purchase": 4,
+        "The boAt Deuce USB 300 2 in 1 cable is compatible with smartphones, tablets, PC peripherals, Bluetooth speakers, power banks and all other devices with Type-C as well as Micro USB port|It ensures 3A fast charging and data transmissions with rapid sync at 480 mbps|The premium Nylon braided skin makes it sturdy and invincible against external damage|Its Aluminium alloy shell housing makes it last longer with 10000+ Bends Lifespan with extended frame protection for strain relief|The resilient and flexible design offers a tangle free experience seamlessly|Deuce USB 300 cable offers a perfect 1.5 meters in length for smooth & hassle-free user experience|2 years warranty from the date of purchase": 4,
+        "44W FlashCharge|Snapdragon 680 comes with octa-core architecture design that adopts the new 6nm process, CPU increased by 25% & GPU performance increased by 10% compared with Qualcomm Snapdragon 662.|Z6 is equipped with a FHD+ AMOLED dispaly to give a truly immersive display experience with true color contrast. The display provides a 180Hz Touch Sampling Rate in the gaming sessions for an enhanced touch response.|50MP AI rear camera comes with a variety of smart AI camera features and effects to capture wonderful moments with ease.": 3,
+        "Supports Ios Devices With Max Output Up To 2.4A|Up To 10, 000+ Bend And 10, 000+ Plugging And Unplugging Test Ensure This Cable A Longer Lifespan|Ensure Fast And Stable Data Transmission Up To 480 Mbps|2 Years Warranty|Compatible Designed To Work Flawlessly With Mfi Or Apple Devices, Iphone, Imac, Ipad Etc|1.2M Tangle Free Durable Tough Braiding Sync & Charge Cable": 3
+      }
+    },
+    "user_id": {
+      "unique_count": 1194,
+      "top_values": {
+        "AHIKJUDTVJ4T6DV6IUGFYZ5LXMPA,AE55KTFVNXYFD5FPYWP2OUPEYNPQ,AEBWA5I4QFCA3P3OBEPMELBGN4GQ,AHMGAC6QM62UXNEOCZIHLHSXPP2Q,AFHROSCGIXUPV3FYQ7H5QOD46Q7Q,AEAMIR3CMSA32IDEINSJKHRNANTA,AF355FTXYAKFH5NYPRTE7SL3WO3Q,AG5DWPD54QGSLWJ6QUFERLPNAX4Q": 10,
+        "AG3D6O4STAQKAY2UVGEUV46KN35Q,AHMY5CWJMMK5BJRBBSNLYT3ONILA,AHCTC6ULH4XB6YHDY6PCH2R772LQ,AGYHHIERNXKA6P5T7CZLXKVPT7IQ,AG4OGOFWXJZTQ2HKYIOCOY3KXF2Q,AENGU523SXMOS7JPDTW52PNNVWGQ,AEQJHCVTNINBS4FKTBGQRQTGTE5Q,AFC3FFC5PKFF5PMA52S3VCHOZ5FQ": 8,
+        "AGAELRYPMTG5SADZPDYB343EASAA,AGFN4JODOM2NTFCJQOHDBQLVDJTQ,AG7EZVSAXIVGMNDLSA55K7URQCJA,AGGF75HIEMB67OU7J3RDALBSUKQQ,AHY5CI4SU6JBYPIZ5RLAGO6W3F4A,AE4KODNBVTDCZWZO4HZM4GTRERPA,AH6HFHSYOY2OHMODD7244DHG7FUQ,AHRW5JERWYAJCZO65PDKZSOEPR6Q": 8,
+        "AECPFYFQVRUWC3KGNLJIOREFP5LQ,AGYYVPDD7YG7FYNBXNGXZJT525AQ,AHONIZU3ICIEHQIGQ6R2VFRSBXOQ,AFPHD2CRPDZMWMBL7WXRSVYWS5JA,AEZ346GX3HJ4O4XNRPHCNHXQURMQ,AEPSWFPNECKO34PUC7I56ITGXR6Q,AHWVEHR5DYLVFTO2KF3IZATFQSWQ,AH4QT33M55677I7ISQOAKEQWACYQ": 7,
+        "AEWAZDZZJLQUYVOVGBEUKSLXHQ5A,AG5HTSFRRE6NL3M5SGCUQBP7YSCA,AH725ST5NW2Y4JZPKUNTIJCUK2BA,AHV3TXIFCJPMS4D5JATCEUR266MQ,AGWIGDEMFIIUAOXYY2QATNBSUGHA,AFSTSLQUV4EVEXWKBOLEFHL2H5YQ,AGAKDNBHY2FKX7I4ACRGILU7QL7A,AFNWJUWJRHCC6HN52KMG5AKZY37Q": 7,
+        "AHWRZWPCTG6ICA7WTNLNNZXWFI5Q,AF2AASVYVSROFD7FXA6EFDS6N2LA,AG6YHIDBTRF4SWXLDWRVMRS56AMQ,AHELRKIGSIPF5VMAGPCPAUJYKOLQ,AH7HRG7P5VGMMU4PN7CEDU74Y2AA,AGPO4HV54G5JLGEZYJJ7NC63V6BQ,AHIMX6EL6H3CLBEVJCWLIQHSAA3A,AEITUHHOUWUNZPQDSHA2ZWQGJUMQ": 6,
+        "AG44HJB2AMIVHAGQZ2WGWONERKCA,AHL2FABQV6XAHZN547DN662X5RWA,AHJE6QFY5XEOZJJWOIOHHIDFWWFQ,AEDMSJ2CEQZID62NXPKEQLMBG2LQ,AHF7ZBKNBLCLFHGJG5KXKPI7QVCQ,AGD2S7EXXSXHBCJHTXUAV6FLXAZA,AHZRUY7MR4SVM3HFJ2SZDGHZJ56A,AHEHKOZPPOVYL75KDU52PSBYDEFQ": 6,
+        "AF477BP57JM7Z4JD4PYB2K33R6AQ,AGTDD34Y77OB36JNYQWQDN7MHECQ,AG7POKBSWQUO4VOYD4HDWYKMMJ4Q,AFZS6H2ZFJEJHRWIJ3IYL7V6KRPA,AHCYM2ECKI2MNOIDHDG4PT6IIN6A,AECZ4IP3TBM4EUG52BZAOQV3EKIA,AH6RQDXZYKAUPNBOYC4NAZERTFOQ,AFTVETL4HGH4KRUF4NXGJUEDPBAQ": 5,
+        "AGU76WKSU62DUNTPCMTC4FCUNRTQ,AEOVR6JEQTAC77BXE5AJMWJGG5PA,AFIFHW5QMFMTWXNZ2JORBMINL3CQ,AG36G3XPHERLKRDG7XYQ2IWJWPIQ,AFEOAY5PB4XEYIOL6DY5WJBOYSKQ,AF2EHSXFZWWS2YEN22DV2ZCJDZZA,AGUFRJ5TPSUUBZBNRWHDRJV4VMQA,AGYEIMSVEDOLA2OV3DIOGX2IMCBA": 5,
+        "AF2IRSQZKMBGX44YDNUPYRHWXOZQ,AF6VSSXOI3Y4PZCNRJ3L27NCXPYA,AHQKC4MLLVOPBTKJFDBGTXFRKLYQ,AGX5ELLH3KJJ4CY2DJJOXDSOEI6Q,AGJ23TWSY6YFMAVSEAOAUEWO4QLQ,AFOHB4M2RWSUQ3SSZWPMD2FPH6PQ,AFVHKKOI25DAQSETPL7Z5W5SIVUA,AE55WJERHR4C7SEAIWX4JJHFSZBA": 5
+      }
+    },
+    "user_name": {
+      "unique_count": 1194,
+      "top_values": {
+        "$@|\\|TO$|-|,Sethu madhav,Akash Thakur,Burger Planet,Justice ⚖️,indrajyoti d.,Aditya Kumar,E.C.GEORGE": 10,
+        "Manav,Adarsh gupta,Sundeep,S.Sayeed Ahmed,jaspreet singh,Khaja moin,Anand,S.ARUMUGAM": 8,
+        "Satheesh Kadiam,Pritom Chakraborty,Vishwa,Simranpreet Singh,Saptarshi,Amazon Customer,D.RAGHUL,Dharmendra kumar": 8,
+        "ArdKn,Nirbhay kumar,Sagar Viswanathan,Asp,Placeholder,BharanI,sonia,Niam": 7,
+        "Omkar dhale,JD,HEMALATHA,Ajwadh a.,amar singh chouhan,Ravi Siddan,Himanshu Goel,Udaykumar": 7,
+        "siddharth patnaik,Dr Sunilkumar H,Krishna,K. S. Rao,vinayp,indhu,Jogi,DRISHTI VASHISTH GUPTA": 6,
+        "Prashant,Sumesh Sundararajan,Vijay Baitha,S.k nahak,Vikram Kumar,Manish,Jm,amit nayak": 6,
+        "Placeholder,श्रीPKजी,Gauri salkar,aQeel,Ashish Raj Arora,Ankit,Amazon Customer,Ramamoorthy Jaykumar": 5,
+        "Actual user,Shanti lal Gurjar,Gowthami,Amrut K.,chetan tandel,Mwnzil brahma,Amazon Customer,Karthik": 5,
+        "Wraith,Krishna Engineering,Kindle Customer,Deeps,Chintada Bhaskar Rao,FH,Vasudev,Done Chandra Mouli": 5
+      }
+    },
+    "review_id": {
+      "unique_count": 1194,
+      "top_values": {
+        "R3F4T5TRYPTMIG,R3DQIEC603E7AY,R1O4Z15FD40PV5,RDVX50PD4CTFE,R3H6WKG0TA5CGU,R3Q3L1KP5QWPV3,RU0LU2PAIIME,R20FTANBPFA653": 10,
+        "R3HXWT0LRP0NMF,R2AJM3LFTLZHFO,R6AQJGUP6P86,R1KD19VHEDV0OR,R3C02RMYQMK6FC,R39GQRVBUZBWGY,R2K9EDOE15QIRJ,R3OI7YT648TL8I": 8,
+        "R2K5OD0MEEBTDL,RS1N6TNO33BOK,R6KWBGOKI1N9Y,R30SKUMYLSXXDN,R1EOYHZWCRSV7B,R13JBDK4SAAYFT,RJOU5K9ECNW7Y,R2APPRANV6IERZ": 8,
+        "RGIQEG07R9HS2,R1SMWZQ86XIN8U,R2J3Y1WL29GWDE,RYGGS0M09S3KY,R17KQRUTAN5DKS,R3AAQGS6HP2QUK,R1HDNOG6TO2CCA,R3PHKXYA5AFEOU": 7,
+        "R3EEUZKKK9J36I,R3HJVYCLYOY554,REDECAZ7AMPQC,R1CLH2ULIVG5U3,R2DMKIBGFKBD6R,RC89B5IAJUTR5,R3B3DDON5FH8DS,R13WAEJDI5RS36": 7,
+        "R27MK332LTT5KS,R2TN6LNGD4FLYB,RVZJOLWLG5JZ9,R32Y3RXFGS0N8S,R1WG388SX6A8SS,R3FCO1GKVP9JHZ,REQQ0KOQUU7N5,RB48XNZD8P2Q4": 6,
+        "R2A7MIUNOW8DOE,R2FXP703540FR1,R37E7QJET0BYE8,R1NOL0GE16P06G,R48EN3ANVWEX9,R17WYXS17TYDER,R2BMYAH01K8EG8,R23IO3LHHG39H": 6,
+        "R1Q323BB35OP30,RJ0CSQUUWFF9W,R23OB4XMH3S9QD,R1K5FQR6CYMQAV,R3QMD6JDUGQUCI,R1R5LTMWOXI38M,R241G3F07D3OBH,R1O7BQ61DXRVWW": 5,
+        "R8QBCR9MM1LGY,R3VN8XDH215N7I,R341EQRY87EZP,R3HHTVIHY2U1FO,RNA87JCGRTQJU,RZ12R7OYYP0KX,R2GZZ3WYE0JJYA,RHE3HXKSONROE": 5,
+        "R213ILI3XNVHQ0,R1LZN1V8UCR9IU,R1EBFTZINSJ0LG,R3BKR3VZ1U81LW,R5OJ20F8H5T8U,R1FKQR9LSBVLH2,R3R8UN7IQY7EIT,R2WBDNEW6HCVSH": 5
+      }
+    },
+    "review_title": {
+      "unique_count": 1194,
+      "top_values": {
+        "Worked on iPhone 7 and didn’t work on XR,Good one,Dull Physical Looks,Just Buy it,Go for it,About the product,Get charging cable at the price,Working well.": 10,
+        "Satisfied,Charging is really fast,Value for money,Product review,Good quality,Good product,Good Product,As of now seems good": 8,
+        "Phone, camera, heating - works for me, may not for all,Good Mobile,Good but not excellent under this budget,Worth the price at 9499,Ok type phone... but unable to make videocall within same service provider.,Phone review,Budget king,Battery backup is good": 8,
+        "A Good Braided Cable for Your Type C Device,Good quality product from ambrane,Super cable,As,Good quality,Good product,its good,Good quality for the price but one issue with my unit": 7,
+        "Good product,Good one,Nice,Really nice product,Very first time change,Good,Fine product but could be better,Very nice it's charging like jet": 7,
+        "Above average phone,Worth For The Money 💰,Okie,Phone is excellent,Purchased in good budget at 12k,It can fulfill basic needs in affordable price range,Nice,About features": 6,
+        "Fake Product,Costly but excellent quality,Storage good but don't know how to Activate warantee??,Good for use,5 stas nahi diya kyuki capacity 477gb hi rahta hai,Speed not as advertise,Good one,It's ok": 6,
+        "The metal pin is losing it's strength,Sahi h bs 44 rupe ki and dilivery charge 40,Good Charging cable,Good sturdy micro usb cable with good charging speeds,Cheapest micro USB cable in the market,boat is better than this,I bought this for 199rs best charging cable for all mobiles,Good": 5,
+        "GOOD,Thank you Amazon very good charging cable,Good,Very good product,good quality,Very Good Product,This is fast charging USB!,Simply perfect at the price of below 100": 5,
+        "Good,Worth to buy,Great value for price,Good product,Nice product.,Reliable and worth it!,Much more sturdy and durable than Apple cable,Good": 5
+      }
+    },
+    "review_content": {
+      "unique_count": 1212,
+      "top_values": {
+        "I am not big on camera usage, personally. I was even mentally prepared for a bad camera, based on some reviews here. But I was pleasantly surprised that camera clicks good photos. They are not awesome, but they are decent photos that can even be shared.Now coming to my biggest grouse; heating issue. The phone started heating up while charging, but it was just a little and so I could have ignored it. But then it started heating up more and got me very concerned. I even ordered a replacement thinking I got a defective piece. But then, after further tests, I found that it is heating more when I download huge amounts of data, for example, when I restore data of my old phone, from back up. This is ok with me as, I don't perform huge data loads regularly, definitely not on phone. Then I tested by running tasks I usually perform such as checking office mails, attending office meeting on phone, watching a video from Amazon Prime, and so on. The phone did not heat up even a little. Personally, this is good for me.At this price range, this is a good phone. But if you are camera heavy user and expect to perform heavy downloads frequently, this phone may not for you. I am personally satisfied with this phone as it works for my type of usage. I will not go into plus points of this phone as they are covered by other reviews already. I am only attempting to clarify about how this phone can suit you (or not) in terms of camera and heating. I had many questions about these aspects before buying. Perhaps this review will help you make an informed decision to buy (or avoid). Cheers.,Display - BeautyCamera - decentPerformance - AmazingBattery - ok (in 5000mah u expect more tbh)Overall good phone...Also after 1day of use, i found some network connectivity issue in my jiosim, which I'm using right now in this phone, but I'll keep update this review after 1month of usage!,It's a decent mobile under this price but few things worried me , weight of the phone, too many procedure to change some settings, no screen casting. Apart from that it has good touch, a decent camera for day light , battery life is good.,I bought this smartphone for my mom. Samusung interface is very handful for easy use. Battery is superb, last whole day. Camera is mediocre but provide original colour pictures. All in all satisfied with this smartphone that i got in sale for 9499.,Unable to do video call within same service provider as in VOLTE within same service provider video call feature is available.,Product is fine. Nothing Fancy but for the budget it is a good phone.,BATTERY : more than enough for normal use Not sure in gamingCAMERA : good in this segment , can record videos in FHD 30fpsDISPLAY : since it's a LCD display the quality is a bit less , but goodV RAM : you can add upto 2gb of virtual ram but have to sacrifice your storage Space to use it OVERALL A GOOD BUDGET PHONE,Finger print is working speedy battery backup is good camera quality is also good": 8,
+        "Good product,long wire,Charges good,Nice,I bought this cable for Rs.339 worthy product for this price, i tested it in various charger adapters 33w and 18w it supports fast charging as well.,Good,Ok,I had got this at good price on sale on Amazon and product is useful with warranty but for warranty you need to go very far not practical for such a cost and mine micro to type c connector stopped working after few days only.,I like this product": 7,
+        "I ordered this cable to connect my phone to Android Auto of car. The cable is really strong and the connection ports are really well made. I already has a Micro USB cable from Ambrane and it's still in good shape. I connected my phone to the car using the cable and it got connected well and no issues. I also connected it to the charging port and yes it has Fast Charging support.,It quality is good at this price and the main thing is that i didn't ever thought that this cable will be so long it's good one and charging power is too good and also supports fast charging,Value for money, with extra length👍,Good, working fine,Product quality is good,Good,very good,Bought for my daughter's old phone.Brand new cable it was not charging, I already repacked and requested for replacement.I checked again, and there was some green colour paste/fungus inside the micro USB connector. I cleaned with an alcoholic and starts working again.Checked the ampere of charging speed got around 1400ma-1500ma - not bad, came with braided 1.5m long cable, pretty impressive for the price.Can't blame the manufacturer.But quality issues by the distributor, they might have stored in very humid place.": 7,
+        "Worked on iPhone 7 and didn’t work on iPhone XR,https://m.media-amazon.com/images/I/71qFFAlV9ZL._SY88.jpg,Look-wise, I didn’t like it. Still, I use it for my work.,Product is quite good and is fast charging.Loved it.,I like it . Looks last long.,The sturdiness will depend on the manner of its use. But its speed of charging is great. Very good product for the average income group.,It's great for charging devices with various types of ports. But works best when charging one device at a time.,Good item.": 7,
+        "I purchased the 6/128gb variant.To sum it up in to pros and cons.Pros :-1.Good design in terms of look of the phone and it's build quality.2. Screen quality is good with little boosted colour tone.3. The new processor is very smooth and responsive.4. Speaker quality is good without too much treble.5. Camera is ok for selfie and main camera performance is above average with less noise.6. Camera in front is small so notch is not distracting while playing video.Cons :-1.Main camera struggles after 3x zoom.And video call performance of front camera is inferior to stock selfie photo.2. 18 watt charger took 1hr30 mins to charge 80% of the phone.So charging speed is not time saving for this big battery.,Good one under This price..! One of the Best Android phone by Vivo 💚,Its super good for normal usage,Camera is ok for normal,It's working fine and no issuew. Iqoo providing quality devices compared to other brands,Camera quality is not that high,Value for money,Phone is very handy and battery is also good. Quality of phone is good.": 6,
+        "128GB SD Card is showing 134GBDon't buy this product,It was a bit costly but prouduct is of great quality. Could have been made little bit cheaper cost wise.,All good,Fast and smooth,Ab mujhe computer ki jarurat nahi padti,Speed is fast but not as advertise I get around read speed 70MB/s and write speed 30MB/s,Good one,Product is ok.": 6,
+        "Everything is fine but it is bulky and hard, it should be softer and thinner.....,Thank you Amazon very good charging cable 👍,Good,Good one,quality is good. worth for 150-200 ₹. short but durable.,Very Good product . Satisfied..,This is fast charging C pin USB!You can purchase it.,Nice product at price of below 100": 5,
+        "Good budget mfi certified lightly cable for this price . Update usage review after 3 to 5 months .,Better than the original one in matter of robustness and durability. Better in prospect of charging . It is far better in durability from the original apple wire. Do not think more you can buy blindly worth to buy and it is mfi certified so you IOS device not damaged. But small negative point is packaging quality of the product.,The charger is a great carry on accessory while travelling without risking the original charger.Price is also very affordable and charging speed is very good with good adaptor or power bank.,Good product , can recommend all , only thing I see as issue is the material,, the cable threads peels off when stick to a Velcro materials. Other wise good product, charges very well like original,Nice,Reliable and worth it,The cable shipped in box made by Apple felt less sturdy and reliable after using one or two times and felt it would break more quickly at the lighting port and had to order Amazon basics cable which is miles better and apple MiFi certified,": 5,
+        "About the TV - Wonderful---------------------------------------------------------------Probably the best TV in this price range (INR13000).Good - Google interface, loaded with features, lightweight, 55 watt power consumption, stable designAverage - Sound and Picture quality is quite good but if you compare it with premium brands then obviously not that good.Features- Most of the streaming apps available and compatible- You can connect with WiFi, LAN Cable, HDMI, Set top box, Laptop, USB, Gaming console, Old dish cable, and direct TV antenna as well- Built in chromecast to cast any compatible app directly from phone to TV over same WiFi networkWays to connect phone -1. Via cast feature on mobile apps - no password needed only need to be on the same WiFi network2. Via chromecast app - project only selected media (pics, videos) or entire phone screenWays to connect PC/Laptop -1. Windows cast option - project the entire laptop screen on TV using windows cast option ( need to be connected on same WiFi network2. Via HDMI cableAbout the Amazon installation service - Awful-------------------------------------------------------1. The technician brought a cheap hanging hook that had MRP INR116 on it and asked for INR499 for it without any receipt. He kept telling that it was not for sale and company had sent this specially. However, it clearly had MRP mentioned on it2. I went to market and bought a much better cabinet for just INR200 and for installation of that as well, technician was really adamant to drill the two required holes on top. He just drilled one on top and one on bottom and kept all the other spare screws ( which I had bought ) with him. After about half an hour of arguments, he finally drilled the other required holes. And for all this, he kept cussing me that I wasted his time. There was no assistance from the person who represented the service agency as well.This whole process took me two hours to complete that too with lots of arguments. This was the worst installation experience in my life so far.Bottomline - Please do not avail the 'so called free' installation service from Amazon. It is just a scam. Instead call the acer support. They will do the job much better.,After using it for 2 months, here are it's pros and cons:Pros :1. Great picture quality. It's awesome.2. Blacks are very good and is adjustable.3. Sound with 30db is very good4. Looks great with thin besel5. Remote comes with favorite OTT buttons.6. Content upscaling is very good.Cons:1. Remote could have been better. Can't use DTH remote to turn on both televisison and set top box.2. Remote operation is bit complex.3. Motion technology not great. There is a noticeable blur when watching moving ballson OTT, but it decreases when you switch to DTH.Overall, it's a nice buy at this price point. I think I am getting fairly better picture quality and sound. I am satisfied with the product.,Product has good picture quality. Good product at that price with 25w sound. Applications running smoothly. 3 months older & no issues yet. It's running smoothly.,You get decent features for the price you pay. Screen resolution might be. Set back as you may find pixalation. Overall it's good,I am amazed with the picture quality of this 720p (HD Ready) TV. It is truly an amazing panel. I found it suitable for a viewing distance of between 6 to 10 feet. Any nearer it may not look very crisp and any farther, it will feel like a very small size. The speakers are also very good for the price and can get very loud without any distortions. However, since the speaker is downward firing, the experience will vary based on whether the TV is wall mounted or kept on a stand.The remote is good, voice search works well for me. TV start up takes a long time in my opinion, but I have not compared it against any other 32 inch TV and hence do not know where it stands among peers.5 GHz Wifi works very well even across walls. Only negative aspect I faced is w.r.t the experience of using my bluetooth headphones/earphones. Firstly, the connection sometimes doesn't happen automatically after a restart - which means I have to remove and re-discover the device thru the menu which is not simple. Secondly, the signal itself seems to be very weak and even at a distance of 8 feet in front of the TV, the signal breaks even if you move your head by 2-3 inches.However, I am still super happy with this TV. I got it for 8k during the launch offer and it is totally worth it and is recommended from my side.,At this price range(₹11499/-)it is good quality product on this market..acer only should work with Sound quality improvement otherwise all ok.Picture quality really impressive,wifi connectivity good,easy to install,boderless screen design is premium and also google voice support is good(sometimes lagging).No major issues found on this TV.Just go for it.,Vellu for money. Good product,Very nice productSave money": 5,
+        "I liked it, worth the money, light weight and comfortable at every situation.this one i got here has stable ui,no lag even,feels premium (mainly the soft strap and the cool crown button adds up much)..the main reason I bought this because it brings all the features everyone needs today with out of the box looks.If someone feels that they have a thin wrist and it wouldn't fit them,don't worry.Even i thought it wouldn't fit me coz i have a thin wrist but it was just fine.,,In this watch, the screen does not turn on and off on double tap, for that you have to press the button and the battery also takes more than 1 hour instead of 35 minutes to get fully charged. And the battery also lasts only 3-4 days, just hope that in the future, if I update the software, then the double tap option will come.,Watch is user friendly, UI is great.Calling feature is great.This watch is different from others in music playing in watch speaker.Great experience.Watchfaces option is good.We can add watchfaces as we can.In my other watch this feature is missing.Love this watch.,This Smartwatch is perfect for beginners who's buy first time smartwatch. ninja call pro plus is recently launched so it comes with latest features and specifications. Display Is top Notched and and brightness is enough for use at outdoor. Heart measure and Spo2 is well accurate all sensors are efficiently worked. Reading of data is accurate near 90 to 95% you can trust on it at emergency situations. It comes with 100 sports mods all types of activities and sports are coverd. Calling experience is also very nice, speaker and microphone is quite decent sufficient voice at indoor. But battery should be better it has require charge 1 time in day. 3D curved display give awasome visual experience. Strap quality is very soft and female also use it very smoothly. So overall it has best smartwatch under 2K Display, Calling, Sensors, Bulit quality, Battery Back-up, sports Mods, Waterproof, etc. You should definitely go for this one. Satisfied Product.👍🔥👍,This watch is very good but 1 problem im using this watch from 1 week and a few days back its pixels were droping, the screen was not working properly but after restarting, it was working properly and from then i didn,t face that problem again.,Nice watch with good UI interface with calling feature. Power packed with features in very low price. If you are on tight budget and looking for caling smartwatch you should definitely go for this one.,The build quality is great.The review about this watches are as follows:Good call quality and Google assistant supportThe UI experience is very smooth except the split screen feature it's a little bit laggyThe only thing that is only bad about this product is the step accuracy I feel like its a little bit lagging back but it catches up to it after a half an hourYou can buy this product if you are on a tight budget and want calling and good UI experience you can buy this product": 5
+      }
+    },
+    "img_link": {
+      "unique_count": 1412,
+      "top_values": {
+        "https://m.media-amazon.com/images/I/413sCRKobNL._SX300_SY300_QL70_ML2_.jpg": 3,
+        "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/51UsScvHQNL._SX300_SY300_QL70_FMwebp_.jpg": 2,
+        "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/31zOsqQOAOL._SY445_SX342_QL70_FMwebp_.jpg": 2,
+        "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/31IvNJZnmdL._SY445_SX342_QL70_FMwebp_.jpg": 2,
+        "https://m.media-amazon.com/images/I/41jlh3c7UbL._SX300_SY300_QL70_FMwebp_.jpg": 2,
+        "https://m.media-amazon.com/images/I/41XtHlbmOHL._SX300_SY300_QL70_ML2_.jpg": 2,
+        "https://m.media-amazon.com/images/I/41op1vdp-UL._SX300_SY300_QL70_ML2_.jpg": 2,
+        "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/41CnR1WhD3L._SX300_SY300_QL70_FMwebp_.jpg": 2,
+        "https://m.media-amazon.com/images/I/41VDUqScJFL._SX300_SY300_QL70_FMwebp_.jpg": 2,
+        "https://m.media-amazon.com/images/I/41KmCJuybRL._SX300_SY300_QL70_FMwebp_.jpg": 2
+      }
+    },
+    "product_link": {
+      "unique_count": 1465,
+      "top_values": {
+        "https://www.amazon.in/Wayona-Braided-WN3LG1-Syncing-Charging/dp/B07JW9H4J1/ref=sr_1_1?qid=1672909124&s=electronics&sr=1-1": 1,
+        "https://www.amazon.in/Ambrane-Unbreakable-Charging-Braided-Cable/dp/B098NS6PVG/ref=sr_1_2?qid=1672909124&s=electronics&sr=1-2": 1,
+        "https://www.amazon.in/Sounce-iPhone-Charging-Compatible-Devices/dp/B096MSW6CT/ref=sr_1_3?qid=1672909124&s=electronics&sr=1-3": 1,
+        "https://www.amazon.in/Deuce-300-Resistant-Tangle-Free-Transmission/dp/B08HDJ86NZ/ref=sr_1_4?qid=1672909124&s=electronics&sr=1-4": 1,
+        "https://www.amazon.in/Portronics-Konnect-POR-1080-Charging-Function/dp/B08CF3B7N1/ref=sr_1_5?qid=1672909124&s=electronics&sr=1-5": 1,
+        "https://www.amazon.in/Solero-TB301-Charging-480Mbps-1-5-Meter/dp/B08Y1TFSP6/ref=sr_1_6?qid=1672909124&s=electronics&sr=1-6": 1,
+        "https://www.amazon.in/boAt-Micro-USB-Tangle-Free-Transmission/dp/B08WRWPM22/ref=sr_1_8?qid=1672909124&s=electronics&sr=1-8": 1,
+        "https://www.amazon.in/MI-MTCY001IN-USB-Type-C-Cable/dp/B08DDRGWTJ/ref=sr_1_9?qid=1672909124&s=electronics&sr=1-9": 1,
+        "https://www.amazon.in/TP-Link-TL-WN725N-150Mbps-Wireless-Adapter/dp/B008IFXQFU/ref=sr_1_10?qid=1672909124&s=electronics&sr=1-10": 1,
+        "https://www.amazon.in/Ambrane-Unbreakable-Charging-Braided-Android/dp/B082LZGK39/ref=sr_1_11?qid=1672909124&s=electronics&sr=1-11": 1
+      }
+    },
+    "main_category": {
+      "unique_count": 9,
+      "top_values": {
+        "Electronics": 526,
+        "Computers&Accessories": 453,
+        "Home&Kitchen": 448,
+        "OfficeProducts": 31,
+        "MusicalInstruments": 2,
+        "HomeImprovement": 2,
+        "Toys&Games": 1,
+        "Car&Motorbike": 1,
+        "Health&PersonalCare": 1
+      }
+    },
+    "sub_category_1": {
+      "unique_count": 29,
+      "top_values": {
+        "Accessories&Peripherals": 381,
+        "Kitchen&HomeAppliances": 308,
+        "HomeTheater,TV&Video": 162,
+        "Mobiles&Accessories": 161,
+        "Heating,Cooling&AirQuality": 116,
+        "WearableTechnology": 76,
+        "Headphones,Earbuds&Accessories": 66,
+        "NetworkingDevices": 34,
+        "OfficePaperProducts": 27,
+        "ExternalDevices&DataStorage": 18
+      }
+    },
+    "sub_category_2": {
+      "unique_count": 71,
+      "top_values": {
+        "Cables&Accessories": 240,
+        "SmallKitchenAppliances": 181,
+        "Accessories": 97,
+        "MobileAccessories": 84,
+        "Vacuum,Cleaning&Ironing": 82,
+        "Smartphones&BasicMobiles": 77,
+        "SmartWatches": 76,
+        "Televisions": 69,
+        "Headphones": 62,
+        "Keyboards,Mice&InputDevices": 60
+      }
+    },
+    "sub_category_3": {
+      "unique_count": 136,
+      "top_values": {
+        "Cables": 267,
+        "Smartphones": 68,
+        "SmartTelevisions": 63,
+        "Irons,Steamers&Accessories": 58,
+        "In-Ear": 52,
+        "RemoteControls": 49,
+        "Chargers": 33,
+        "Kettles&HotWaterDispensers": 32,
+        "MixerGrinders": 27,
+        "Stationery": 26
+      }
+    },
+    "price_range": {
+      "unique_count": 5,
+      "top_values": {
+        "Economy (₹200-500)": 376,
+        "Luxury (>₹2000)": 362,
+        "Premium (₹1000-2000)": 275,
+        "Mid-range (₹500-1000)": 252,
+        "Budget (<₹200)": 200
+      }
+    },
+    "rating_category": {
+      "unique_count": 5,
+      "top_values": {
+        "Good": 900,
+        "Average": 467,
+        "Below Average": 66,
+        "Excellent": 29,
+        "Poor": 2
+      }
+    },
+    "brand": {
+      "unique_count": 437,
+      "top_values": {
+        "boAt": 67,
+        "Samsung": 36,
+        "AmazonBasics": 33,
+        "Portronics": 31,
+        "Ambrane": 29,
+        "Bajaj": 26,
+        "Redmi": 26,
+        "Fire-Boltt": 26,
+        "Amazon": 25,
+        "Noise": 24
+      }
+    }
+  }
+}

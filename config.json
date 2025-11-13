@@ -1,0 +1,7 @@
+{
+  "chroma_db_path": "./chroma_db",
+  "collection_name": "amazon_kb",
+  "dataset_metadata_path": "dataset_metadata.json",
+  "dataset_path_file": "dataset_path.txt",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2"
+}
