@@ -480,7 +480,7 @@ Try these queries (no API needed):
 
 
 # Initialize chatbot
-GEMINI_API_KEY = "AIzaSyAKrO_ucEVGefsHBn7wcP_IMSBS3yqmA9E"   # Replace with your API key
+GEMINI_API_KEY = ""   # Replace with your API key
 chatbot = SmartAmazonChatbot(GEMINI_API_KEY)
 
 
