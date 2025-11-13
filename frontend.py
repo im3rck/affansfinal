@@ -347,8 +347,9 @@ These don't require API calls!"""
 
     def analyze_dataset_sql(self, query: str, classification: Dict) -> str:
         """Analyze dataset and provide SQL + results."""
-        # Generate SQL-style query
-        sql_prompt = f"""Generate a SQL query to answer this question about an Amazon products dataset.
+        try:
+            # Generate SQL-style query
+            sql_prompt = f"""Generate a SQL query and equivalent pandas code to answer this question.
 
 Dataset Schema:
 Columns: {', '.join(self.dataset_info['columns'])}
@@ -358,51 +359,100 @@ Question: {query}
 
 Provide:
 1. A SQL query (assume table name is 'products')
-2. Equivalent pandas code
+2. Equivalent pandas code that works with DataFrame 'df'
 
-Format:
-SQL: <query>
-PANDAS: <code>"""
+Format your response EXACTLY as:
 
-        response = self.model.generate_content(sql_prompt)
-        response_text = response.text
-        
-        # Parse SQL and Pandas code
-        sql_query = ""
-        pandas_code = ""
-        
-        for line in response_text.split('\n'):
-            if line.startswith('SQL:'):
-                sql_query = line.replace('SQL:', '').strip()
-            elif line.startswith('PANDAS:'):
-                pandas_code = line.replace('PANDAS:', '').strip()
-            elif sql_query and not pandas_code and not line.startswith('SQL:'):
-                sql_query += " " + line.strip()
-            elif pandas_code:
-                pandas_code += "\n" + line
-        
-        # Execute pandas code
-        pandas_code = pandas_code.strip()
-        if "```" in pandas_code:
-            pandas_code = pandas_code.split("```")[1].split("```")[0]
-            if pandas_code.startswith('python'):
-                pandas_code = '\n'.join(pandas_code.split('\n')[1:])
-        
-        result = None
-        try:
-            local_vars = {'df': self.df, 'pd': pd}
-            exec(pandas_code, {'__builtins__': {}}, local_vars)
-            if 'result' in local_vars:
-                result = local_vars['result']
+```sql
+<your SQL query here>
+```
+
+```python
+<your pandas code here>
+result = <final result>
+```
+
+Return ONLY the code blocks, no other text."""
+
+            response = self.model.generate_content(sql_prompt)
+            response_text = response.text
+
+            # Extract SQL query
+            sql_query = ""
+            if "```sql" in response_text:
+                sql_parts = response_text.split("```sql")
+                if len(sql_parts) > 1:
+                    sql_query = sql_parts[1].split("```")[0].strip()
+
+            # Extract pandas code
+            pandas_code = ""
+            if "```python" in response_text:
+                python_parts = response_text.split("```python")
+                if len(python_parts) > 1:
+                    pandas_code = python_parts[1].split("```")[0].strip()
+            elif "```" in response_text and not sql_query:
+                # Fallback: if no SQL, try generic code block
+                code_parts = response_text.split("```")
+                if len(code_parts) > 2:
+                    pandas_code = code_parts[1].strip()
+                    if pandas_code.startswith('python'):
+                        pandas_code = '\n'.join(pandas_code.split('\n')[1:])
+
+            # Execute pandas code
+            result = None
+            error = None
+            if pandas_code:
+                try:
+                    import numpy as np
+                    safe_builtins = {
+                        'len': len, 'str': str, 'int': int, 'float': float,
+                        'list': list, 'dict': dict, 'set': set, 'tuple': tuple,
+                        'range': range, 'enumerate': enumerate, 'zip': zip,
+                        'sum': sum, 'min': min, 'max': max, 'abs': abs,
+                        'round': round, 'sorted': sorted, 'True': True, 'False': False,
+                        'None': None
+                    }
+                    local_vars = {'df': self.df, 'pd': pd, 'np': np}
+                    exec(pandas_code, {'__builtins__': safe_builtins}, local_vars)
+                    if 'result' in local_vars:
+                        result = local_vars['result']
+                except Exception as e:
+                    error = str(e)
+
+            # Format output
+            output = "## SQL Query & Pandas Code\n\n"
+
+            if sql_query:
+                output += f"**SQL Query:**\n```sql\n{sql_query}\n```\n\n"
+            else:
+                output += "**SQL Query:**\n```sql\n-- Could not generate SQL query\n```\n\n"
+
+            if pandas_code:
+                output += f"**Pandas Code:**\n```python\n{pandas_code}\n```\n\n"
+            else:
+                output += "**Pandas Code:**\n```python\n# Could not generate pandas code\n```\n\n"
+
+            output += f"**Result:**\n"
+            if error:
+                output += f"Error executing code: {error}\n"
+            elif result is not None:
+                output += f"```\n{self._format_result(result)}\n```"
+            else:
+                output += "No result generated\n"
+
+            return output
+
         except Exception as e:
-            result = f"Error: {e}"
-        
-        # Format output
-        output = f"**SQL Query:**\n```sql\n{sql_query}\n```\n\n"
-        output += f"**Pandas Code:**\n```python\n{pandas_code}\n```\n\n"
-        output += f"**Result:**\n{self._format_result(result)}"
-        
-        return output
+            error_str = str(e)
+            if "429" in error_str or "quota" in error_str.lower():
+                return """⚠️ API rate limit exceeded. Please wait a moment before trying again.
+
+Try using simple direct queries that don't require API calls:
+- "show top rated products"
+- "cheapest products"
+- "brands list"
+"""
+            return f"Error generating SQL: {error_str}"
     
     def _format_result(self, result) -> str:
         """Format analysis result for display."""
@@ -569,6 +619,20 @@ Response:"""
             # If any advanced indicator is present, skip direct query and use classification
             if any(indicator in msg_lower for indicator in advanced_indicators):
                 return None
+
+            # Also skip if asking for specific product categories/types with filtering
+            # These queries need AI to understand context and filter appropriately
+            category_indicators = [
+                'cables', 'usb', 'charger', 'phone', 'laptop', 'mouse', 'keyboard',
+                'headphone', 'earphone', 'speaker', 'monitor', 'tablet', 'watch',
+                'camera', 'adapter', 'power bank', 'bluetooth', 'wireless',
+                'suggest', 'recommend', 'find me', 'looking for', 'need'
+            ]
+
+            # If asking for category-specific products with conditions, use AI
+            if any(cat in msg_lower for cat in category_indicators):
+                if any(word in msg_lower for word in ['under', 'below', 'above', 'between', 'best', 'top']):
+                    return None
 
         # Dataset info queries
         if any(word in msg_lower for word in ['how many', 'total rows', 'count', 'dataset size']):
