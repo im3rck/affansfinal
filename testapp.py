@@ -260,7 +260,7 @@ Use 'df' as the dataframe variable name."""
 # Example usage
 if __name__ == "__main__":
     # Initialize chatbot
-    GEMINI_API_KEY = "AIzaSyAKrO_ucEVGefsHBn7wcP_IMSBS3yqmA9E" 
+    GEMINI_API_KEY = "YOUR API KEY" 
     chatbot = AmazonRAGChatbot(GEMINI_API_KEY)
     
     # Load PDFs (replace with your actual PDF paths)
@@ -302,4 +302,5 @@ if __name__ == "__main__":
             continue
         
         response = chatbot.chat(user_query)
+
         print(f"\n🤖 Assistant: {response['answer']}")
