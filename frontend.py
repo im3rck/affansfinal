@@ -172,9 +172,11 @@ Respond in JSON format:
             # Use Advanced RAG for retrieval
             print(f"\n🔍 Using Advanced RAG for query: '{query}'")
 
+            # Optimize API usage: disable query rewriting by default (saves 1 API call)
+            # Hybrid search + reranking still provides excellent results
             retrieval_results = self.advanced_rag.retrieve(
                 query,
-                use_query_rewriting=True,
+                use_query_rewriting=False,  # Disabled to save API quota
                 use_reranking=True,
                 top_k=n_results,
                 semantic_weight=0.6,
@@ -215,16 +217,25 @@ Answer:"""
             return response.text
 
         except Exception as e:
+            error_str = str(e)
             print(f"Error in advanced RAG query: {e}")
-            return f"I encountered an error while searching the knowledge base: {str(e)}"
+
+            # Handle quota exceeded errors gracefully
+            if "429" in error_str or "quota" in error_str.lower():
+                return """I've temporarily exceeded the API rate limit. Please wait a moment and try again.
+
+💡 Tip: For policy questions, I can search the knowledge base using cached embeddings which doesn't require API calls. Try asking: "What is the return policy?" or similar questions."""
+
+            return f"I encountered an error while searching the knowledge base. Please try rephrasing your question or try again in a moment."
     
     def analyze_dataset_natural(self, query: str, classification: Dict) -> str:
         """
         Analyze dataset and provide natural language response
         Uses advanced prompting for better results
         """
-        # Generate pandas code to answer the query
-        analysis_prompt = f"""You are a data analyst expert. Generate Python pandas code to answer the user's question.
+        try:
+            # Generate pandas code to answer the query
+            analysis_prompt = f"""You are a data analyst expert. Generate Python pandas code to answer the user's question.
 
 Dataset Schema:
 - Columns: {', '.join(self.dataset_info['columns'])}
@@ -246,45 +257,58 @@ Use 'df' as the DataFrame variable name.
 
 Return ONLY the Python code, no explanations:"""
 
-        code_response = self.model.generate_content(analysis_prompt)
-        pandas_code = code_response.text.strip()
-        
-        # Clean up code
-        if "```python" in pandas_code:
-            pandas_code = pandas_code.split("```python")[1].split("```")[0]
-        elif "```" in pandas_code:
-            pandas_code = pandas_code.split("```")[1].split("```")[0]
-        
-        pandas_code = pandas_code.strip()
-        
-        # Execute the code
-        result = None
-        error = None
-        
-        try:
-            local_vars = {'df': self.df, 'pd': pd}
-            exec(pandas_code, {'__builtins__': {}}, local_vars)
-            
-            if 'result' in local_vars:
-                result = local_vars['result']
-            else:
-                # Find any dataframe/series/value in local_vars
-                for var_name, var_value in local_vars.items():
-                    if var_name not in ['df', 'pd']:
-                        result = var_value
-                        break
-        except Exception as e:
-            error = str(e)
-        
-        # Generate natural language response
-        if error:
-            return f"I encountered an error while analyzing the data: {error}\n\nCould you rephrase your question?"
-        
-        # Convert result to readable format
-        result_str = self._format_result(result)
-        
-        # Generate natural language answer
-        nl_prompt = f"""You are a friendly e-commerce assistant helping a customer understand data insights.
+            code_response = self.model.generate_content(analysis_prompt)
+            pandas_code = code_response.text.strip()
+
+            # Clean up code
+            if "```python" in pandas_code:
+                pandas_code = pandas_code.split("```python")[1].split("```")[0]
+            elif "```" in pandas_code:
+                pandas_code = pandas_code.split("```")[1].split("```")[0]
+
+            pandas_code = pandas_code.strip()
+
+            # Execute the code
+            result = None
+            error = None
+
+            try:
+                # Create safe execution environment with necessary builtins
+                import numpy as np
+                safe_builtins = {
+                    'len': len, 'str': str, 'int': int, 'float': float,
+                    'list': list, 'dict': dict, 'set': set, 'tuple': tuple,
+                    'range': range, 'enumerate': enumerate, 'zip': zip,
+                    'sum': sum, 'min': min, 'max': max, 'abs': abs,
+                    'round': round, 'sorted': sorted, 'True': True, 'False': False,
+                    'None': None
+                }
+                local_vars = {'df': self.df, 'pd': pd, 'np': np}
+                exec(pandas_code, {'__builtins__': safe_builtins}, local_vars)
+
+                if 'result' in local_vars:
+                    result = local_vars['result']
+                else:
+                    # Find any dataframe/series/value in local_vars
+                    for var_name, var_value in local_vars.items():
+                        if var_name not in ['df', 'pd', 'np']:
+                            result = var_value
+                            break
+            except Exception as e:
+                error = str(e)
+
+            # Generate natural language response
+            if error:
+                # Better error messages
+                if "import" in error.lower():
+                    return f"I encountered a code execution error. This usually means the generated code tried to use unavailable functions.\n\n**Error**: {error}\n\nPlease try rephrasing your question or ask for simpler analysis."
+                return f"I encountered an error while analyzing the data: {error}\n\nTry rephrasing your question more simply."
+
+            # Convert result to readable format
+            result_str = self._format_result(result)
+
+            # Generate natural language answer
+            nl_prompt = f"""You are a friendly e-commerce assistant helping a customer understand data insights.
 
 Customer Question: {query}
 
@@ -300,10 +324,27 @@ Generate a natural, conversational response that:
 
 Response:"""
 
-        nl_response = self.model.generate_content(nl_prompt)
-        
-        return nl_response.text
-    
+            nl_response = self.model.generate_content(nl_prompt)
+
+            return nl_response.text
+
+        except Exception as e:
+            error_str = str(e)
+            # Handle API quota errors
+            if "429" in error_str or "quota" in error_str.lower():
+                return f"""⚠️ API rate limit exceeded. Please wait a moment before trying again.
+
+**Your question**: {query}
+
+💡 **Quick workaround**: Try using simple direct queries instead:
+- "show top rated products"
+- "cheapest products"
+- "brands list"
+
+These don't require API calls!"""
+
+            return f"Error during analysis: {error_str}\n\nPlease try a simpler query."
+
     def analyze_dataset_sql(self, query: str, classification: Dict) -> str:
         """Analyze dataset and provide SQL + results."""
         # Generate SQL-style query
