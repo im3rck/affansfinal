@@ -5,6 +5,12 @@ import google.generativeai as genai
 import json
 from typing import List, Dict, Tuple
 import os
+import base64
+from io import BytesIO
+
+# Import advanced RAG and analytics modules
+from advanced_rag import AdvancedRAGSystem
+from data_analytics import HybridAnalyticsEngine
 
 class SmartAmazonChatbot:
     
@@ -13,41 +19,74 @@ class SmartAmazonChatbot:
         genai.configure(api_key=gemini_api_key)
         self.model = genai.GenerativeModel('gemini-2.5-flash')
         self.embedding_model = 'models/embedding-001'
-        
+
         # Load configuration
         with open("config.json", "r", encoding='utf-8') as f:
             config = json.load(f)
-        
+
         # Initialize ChromaDB
         self.chroma_client = chromadb.PersistentClient(path=config["chroma_db_path"])
         self.pdf_collection = self.chroma_client.get_collection(config["collection_name"])
-        
+
         # Load dataset
         with open(config["dataset_path_file"], "r", encoding='utf-8') as f:
             dataset_path = f.read().strip()
         self.df = pd.read_csv(dataset_path, encoding='utf-8')
-        
+
         # Load metadata
         with open(config["dataset_metadata_path"], "r", encoding='utf-8') as f:
             self.dataset_info = json.load(f)
-        
+
         # Conversation history
         self.conversation_history = []
-        
+
         print("Chatbot initialized successfully!")
         print(f"Vector DB: {self.pdf_collection.count()} documents")
         print(f"Dataset: {len(self.df)} rows")
+
+        # Initialize Advanced RAG System
+        print("\n🚀 Initializing Advanced RAG System...")
+        self.advanced_rag = AdvancedRAGSystem(self.model)
+        self._initialize_advanced_rag()
+
+        # Initialize Hybrid Analytics Engine
+        print("\n📊 Initializing Hybrid Analytics Engine...")
+        self.analytics_engine = HybridAnalyticsEngine(self.df, self.model)
+        print("✓ Analytics Engine ready!")
+
+        # Flag to track if we should show charts
+        self.last_response_has_charts = False
+        self.last_charts = []
     
     def generate_embedding(self, text: str) -> List[float]:
         """Generate embedding for query using Sentence Transformers."""
         from sentence_transformers import SentenceTransformer
-        
+
         if not hasattr(self, 'st_model'):
             print("Loading embedding model...")
             self.st_model = SentenceTransformer('all-MiniLM-L6-v2')
-        
+
         embedding = self.st_model.encode(text, convert_to_tensor=False)
         return embedding.tolist()
+
+    def _initialize_advanced_rag(self):
+        """Initialize the Advanced RAG system with documents from ChromaDB"""
+        try:
+            # Get all documents from ChromaDB
+            all_docs = self.pdf_collection.get()
+
+            if all_docs and all_docs['documents']:
+                documents = all_docs['documents']
+                metadatas = all_docs.get('metadatas', [{}] * len(documents))
+
+                # Index documents in the advanced RAG system
+                self.advanced_rag.index_knowledge_base(documents, metadatas)
+                print(f"✓ Advanced RAG indexed {len(documents)} documents")
+            else:
+                print("⚠ No documents found in ChromaDB")
+        except Exception as e:
+            print(f"⚠ Error initializing Advanced RAG: {e}")
+            self.advanced_rag = None
     
     def classify_and_route_query(self, query: str) -> Dict:
         """
@@ -69,7 +108,14 @@ Analyze the user's query and classify it into ONE of these categories:
    - Comparisons between products/categories
    - Finding specific products based on criteria
 
-3. **GENERAL_CHAT** - General conversation:
+3. **ANALYTICS_VISUALIZATION** - Questions requiring insights with charts/graphs:
+   - Trend analysis, insights, patterns
+   - Visual analysis requests (show chart, visualize, plot)
+   - Price distribution, rating analysis
+   - Category performance, sales insights
+   - Any query mentioning: chart, graph, visualization, trend, insight, analysis, overview
+
+4. **GENERAL_CHAT** - General conversation:
    - Greetings, small talk
    - Thank you messages
    - Feedback about the service
@@ -83,8 +129,8 @@ User Query: "{query}"
 
 Respond in JSON format:
 {{
-    "category": "DOCUMENT/DATASET_ANALYSIS/GENERAL_CHAT",
-    "output_preference": "natural/sql/unclear",
+    "category": "DOCUMENT/DATASET_ANALYSIS/ANALYTICS_VISUALIZATION/GENERAL_CHAT",
+    "output_preference": "natural/sql/charts/unclear",
     "intent": "brief description of what user wants",
     "confidence": "high/medium/low"
 }}"""
@@ -112,27 +158,46 @@ Respond in JSON format:
                 "confidence": "low"
             }
     
-    def query_documents(self, query: str, n_results: int = 3) -> str:
-        """Query vector database for relevant documents."""
-        query_embedding = self.generate_embedding(query)
-        
-        results = self.pdf_collection.query(
-            query_embeddings=[query_embedding],
-            n_results=n_results
-        )
-        
-        if not results['documents'][0]:
-            return "I couldn't find relevant information in the knowledge base. Could you rephrase your question?"
-        
-        # Combine retrieved context
-        context = "\n\n---\n\n".join(results['documents'][0])
-        
-        # Generate natural language answer
-        answer_prompt = f"""You are a helpful customer service assistant for Amazon.
+    def query_documents(self, query: str, n_results: int = 5) -> str:
+        """
+        Query documents using Advanced RAG system with:
+        - Query Rewriting
+        - Hybrid Search (Semantic + Keyword)
+        - Cross-Encoder Reranking
+        """
+        try:
+            if not self.advanced_rag:
+                return "Advanced RAG system not available. Please check initialization."
+
+            # Use Advanced RAG for retrieval
+            print(f"\n🔍 Using Advanced RAG for query: '{query}'")
+
+            retrieval_results = self.advanced_rag.retrieve(
+                query,
+                use_query_rewriting=True,
+                use_reranking=True,
+                top_k=n_results,
+                semantic_weight=0.6,
+                keyword_weight=0.4
+            )
+
+            # Log retrieval details
+            print(f"   Retrieved: {retrieval_results['retrieval_details']['final_count']} documents")
+            if retrieval_results.get('rewritten_queries'):
+                print(f"   Query variations: {len(retrieval_results['rewritten_queries'])}")
+
+            if not retrieval_results['retrieved_documents']:
+                return "I couldn't find relevant information in the knowledge base. Could you rephrase your question?"
+
+            # Get formatted context
+            context = self.advanced_rag.get_context_for_llm(retrieval_results)
+
+            # Generate natural language answer
+            answer_prompt = f"""You are a helpful customer service assistant for Amazon.
 
 Based on the following information from our knowledge base, answer the customer's question in a friendly and informative way.
 
-Knowledge Base Context:
+Knowledge Base Context (Retrieved using advanced semantic search):
 {context}
 
 Customer Question: {query}
@@ -142,11 +207,16 @@ Instructions:
 - Be friendly and professional
 - If the information isn't in the context, say so politely
 - Use natural language, not robotic responses
+- Cite specific information from the context when relevant
 
 Answer:"""
 
-        response = self.model.generate_content(answer_prompt)
-        return response.text
+            response = self.model.generate_content(answer_prompt)
+            return response.text
+
+        except Exception as e:
+            print(f"Error in advanced RAG query: {e}")
+            return f"I encountered an error while searching the knowledge base: {str(e)}"
     
     def analyze_dataset_natural(self, query: str, classification: Dict) -> str:
         """
@@ -310,6 +380,52 @@ PANDAS: <code>"""
         else:
             return str(result)
     
+    def handle_analytics_visualization(self, query: str) -> Tuple[str, List[str]]:
+        """
+        Handle analytics queries with ML insights and visualization
+        Returns: (text_response, list_of_chart_base64_images)
+        """
+        try:
+            print(f"\n📊 Performing hybrid analytics for: '{query}'")
+
+            # Use the hybrid analytics engine
+            analytics_result = self.analytics_engine.analyze_and_visualize(query)
+
+            # Build comprehensive response
+            response_text = f"""## {analytics_result['analysis_type']}
+
+### 🤖 AI-Powered Insights
+
+{analytics_result['llm_interpretation']}
+
+---
+
+### 📈 Data Visualizations
+
+{"I've generated detailed charts below to help visualize these insights." if analytics_result['charts'] else ""}
+
+---
+
+### 🔬 Technical Details
+
+**ML Insights:**
+```
+{str(analytics_result['ml_insights'])[:500]}...
+```
+
+**Analysis Method:** Hybrid ML + Generative AI
+**Visualization Count:** {len(analytics_result['charts'])}
+"""
+
+            # Extract chart images
+            chart_images = [chart['image'] for chart in analytics_result['charts']]
+
+            return response_text, chart_images
+
+        except Exception as e:
+            print(f"Error in analytics visualization: {e}")
+            return f"I encountered an error while analyzing the data: {str(e)}", []
+
     def handle_general_chat(self, query: str) -> str:
         """Handle general conversation."""
         chat_prompt = f"""You are a friendly Amazon customer service chatbot assistant.
@@ -319,6 +435,7 @@ Respond to this message naturally and helpfully: "{query}"
 You can:
 - Answer questions about company policies (stored in knowledge base)
 - Analyze product data and provide recommendations
+- Generate insights with charts and visualizations
 - Help users find products
 - Provide general assistance
 
@@ -335,25 +452,40 @@ Response:"""
         """
         if not message.strip():
             return "Please enter a message."
-        
+
+        # Reset chart flags
+        self.last_response_has_charts = False
+        self.last_charts = []
+
         # Check for simple direct queries (no API needed)
         response = self._try_direct_query(message)
         if response:
             return response
-        
+
         try:
             # Classify query
             classification = self.classify_and_route_query(message)
-            
+
             print(f"\n Query: {message}")
             print(f"   Category: {classification['category']}")
             print(f"   Output: {classification['output_preference']}")
             print(f"   Intent: {classification['intent']}")
-            
+
             # Route based on classification
             if classification['category'] == 'DOCUMENT':
                 response = self.query_documents(message)
-                
+
+            elif classification['category'] == 'ANALYTICS_VISUALIZATION':
+                # Use hybrid analytics with charts
+                response, charts = self.handle_analytics_visualization(message)
+                if charts:
+                    self.last_response_has_charts = True
+                    self.last_charts = charts
+                    # Embed charts in response as HTML
+                    response += "\n\n### Charts:\n\n"
+                    for i, chart_b64 in enumerate(charts, 1):
+                        response += f'<img src="data:image/png;base64,{chart_b64}" style="max-width:100%; margin:10px 0;" alt="Chart {i}"/>\n\n'
+
             elif classification['category'] == 'DATASET_ANALYSIS':
                 # Check if user wants SQL output or natural language
                 if classification['output_preference'] == 'sql':
@@ -361,12 +493,12 @@ Response:"""
                 else:
                     # Natural language is default
                     response = self.analyze_dataset_natural(message, classification)
-                                
+
             else:  # GENERAL_CHAT
                 response = self.handle_general_chat(message)
-            
+
             return response
-        
+
         except Exception as e:
             # If API quota exceeded, try direct query
             if "429" in str(e) or "quota" in str(e).lower():
@@ -594,15 +726,17 @@ with gr.Blocks(
             examples=[
                 "What is the return policy?",
                 "Suggest me the best rated USB cables under ₹500",
-                "Show me the top 5 products by rating",
-                "What's the average discount percentage across all products?",
-                "Which category has the most products?",
+                "Show me price distribution analysis with charts",
+                "Visualize rating trends and patterns",
+                "Show sales insights by category with graphs",
+                "Analyze discount patterns and create visualizations",
+                "What are the pricing trends across categories?",
+                "Show comprehensive data analysis with charts",
                 "Find products with rating above 4.5 - show SQL query",
-                "Compare prices between different brands",
-                "What are the most popular products?"
+                "Compare prices between different brands"
             ],
-            title="Conversational Interface",
-            description="Enter your query below to get started"
+            title="🤖 Conversational Interface with Advanced RAG & ML Analytics",
+            description="Powered by: Query Rewriting • Hybrid Search • Reranking • ML Insights • Auto-Visualization"
         )
     
 
@@ -610,14 +744,21 @@ with gr.Blocks(
 
 # Launch the app
 if __name__ == "__main__":
-    print("\n" + "="*60)
-    print("LAUNCHING GRADIO INTERFACE")
-    print("="*60)
-    print("\nSystem Ready!")
-    print(f"Knowledge Base: {chatbot.pdf_collection.count()} documents")
-    print(f"Dataset: {len(chatbot.df):,} products")
-    print("\nStarting web interface...")
-    
+    print("\n" + "="*70)
+    print("🚀 LAUNCHING ADVANCED RAG CHATBOT WITH HYBRID ML+AI ANALYTICS")
+    print("="*70)
+    print("\n✅ System Ready!")
+    print(f"📚 Knowledge Base: {chatbot.pdf_collection.count()} documents")
+    print(f"📊 Dataset: {len(chatbot.df):,} products")
+    print("\n🎯 Advanced Features:")
+    print("   ✓ Query Rewriting for better retrieval")
+    print("   ✓ Hybrid Search (Semantic + Keyword/BM25)")
+    print("   ✓ Cross-Encoder Reranking")
+    print("   ✓ ML-based Data Analysis")
+    print("   ✓ Auto-generated Charts & Visualizations")
+    print("   ✓ LLM-powered Insight Interpretation")
+    print("\n🌐 Starting web interface...")
+
     demo.launch(
         share=True,  # Set to True to create a public link
         server_name="0.0.0.0",
